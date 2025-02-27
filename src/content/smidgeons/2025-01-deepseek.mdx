@@ -1,0 +1,34 @@
+---
+title: "DeepSeek"
+startDate: 2025-01-26T10:00:35.149Z
+type: "smidgeon"
+topics: ["Artificial Intelligence"]
+---
+
+import TweetEmbed from "../../components/mdx/TweetEmbed.astro"
+
+If you're not distressingly embedded in the torrent of AI news on Twixxer like I reluctantly am, you might not know what [DeepSeek](https://en.wikipedia.org/wiki/DeepSeek) is yet. Bless you.
+
+From what I've gathered:
+
+- On January 20th, a Chinese company named DeepSeek released a new reasoning model called R1.
+- A reasoning model is a large language model told to “think step-by-step” before it gives a final answer. This “[chain of thought](https://arxiv.org/abs/2201.11903)” technique dramatically improves the quality of its answers. These models are also fine-tuned to perform well on complex reasoning tasks.
+- R1 reaches equal or better performance on a number of major benchmarks compared to OpenAI's o1 (our current state-of-the-art reasoning model) and Anthropic's Claude Sonnet 3.5 but is significantly cheaper to use.
+- DeepSeek R1 is [open-source](https://github.com/deepseek-ai/DeepSeek-R1/tree/main), meaning you can download it and run it on your own machine.
+- They offer [API access](https://api-docs.deepseek.com/) at a _much_ lower cost than OpenAI or Anthropic. But given this is a Chinese model, and the current political climate is “complicated,” and they're almost certainly training on input data, don't put any sensitive or personal data through it.
+- You can use R1 online through the DeepSeek [chat interface](https://chat.deepseek.com/). You can turn on both reasoning and web search to inform your answers. Reasoning mode shows you the model “thinking out loud” before returning the final answer.
+
+<BasicImage margin="0 auto 2rem" framed src="/images/smidgeons/deepseek1.png" alt="DeepSeek R1 showing its thinking" />
+
+- You can use [Ollama](https://ollama.com/) to run R1 on your own machine, but standard personal laptops won't be able to handle the larger, more capable versions of the model (32B+). You'll have to run the smaller 8B or 14B version, which will be slightly less capable. I have the 14B version running just fine on a Macbook Pro with an Apple M1 chip. Here's [a Reddit guide](https://www.reddit.com/r/selfhosted/comments/1i6ggyh/got_deepseek_r1_running_locally_full_setup_guide/) on getting it running locally.
+- DeepSeek claims it only cost $5.5 million to train the model, compared to an [estimated $41-78 million](https://www.forbes.com/sites/katharinabuchholz/2024/08/23/the-extreme-cost-of-training-ai-models/) for GPT-4. If true, building state-of-the-art models is no longer just a billionaires game.
+- The thoughtbois of Twixxer are winding themselves into knots trying to theorise what this means for the U.S.-China AI arms race. A few people have referred to this as a “[sputnik moment](https://www.exponentialview.co/p/the-year-end-wake-up-the-chinese).”
+- From my initial, unscientific, unsystematic explorations with it, it's _really_ good. Using it as my default LM going forward (for tasks that don't involve sensitive data). Quirks include being way too verbose in its reasoning explanations and using lots of Chinese language sources when it searches the web. Makes it challenging to validate whether claims match the source texts.
+
+Here's the announcement Tweet:
+
+<TweetEmbed tweetId="1881318130334814301" />
+
+<Spacer size="xs" />
+
+**TLDR** high-quality reasoning models are getting significantly cheaper and more open-source. This means companies like Google, OpenAI, and Anthropic won't be able to maintain a monopoly on access to fast, cheap, good quality reasoning. This is net good for everyone.

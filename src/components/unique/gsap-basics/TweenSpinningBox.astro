@@ -1,0 +1,44 @@
+---
+
+---
+
+<div class="box" id="spinning-box"></div>
+
+<script>
+	const box = document.getElementById("spinning-box");
+
+	const observer = new IntersectionObserver(
+		([entry]) => {
+			if (entry.isIntersecting) {
+				box?.classList.add("animate");
+			} else {
+				box?.classList.remove("animate");
+			}
+		},
+		{
+			threshold: 0.2,
+			rootMargin: "-30% 0px",
+		},
+	);
+
+	if (box) {
+		observer.observe(box);
+	}
+</script>
+
+<style>
+	.box {
+		width: 100px;
+		height: 100px;
+		margin: 2em;
+		border-radius: 4px;
+		background: #2d2a55;
+		transform: translateX(0) rotate(0deg);
+		transition: transform 0.8s ease-out;
+		will-change: transform;
+	}
+
+	.box.animate {
+		transform: translateX(20vw) rotate(360deg);
+	}
+</style>

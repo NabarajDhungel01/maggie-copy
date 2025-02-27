@@ -1,0 +1,79 @@
+---
+title: "Epistemic Disclosure"
+description: "Providing clear metadata on the epistemic validity of content"
+growthStage: "evergreen"
+startDate: "2021-11-10"
+updated: "2022-01-02"
+type: "pattern"
+topics: ["Digital Gardening"]
+---
+
+import References from "../../components/mdx/References.astro";
+import ReferencesLink from "../../components/mdx/ReferencesLink.astro";
+
+<h2 className="micro">The Context</h2>
+
+For most of the words we read online, we have a limited amount of context about the writer and how much effort they've put into the piece we're reading.
+
+We might have a name and a tiny 32px profile image. We don't know how long it took them to write these words, how many hundreds of tabs they read through, or whether they spent years earning a graduate degree on the topic. We rarely have a rich backstory with a comprehensive educational and professional history at hand.
+
+If we disagree with their points, we're more likely to be ungenerous Epistemic Peers who assume the worst: they've barfed this garbage up in a single, frenzied caffeine rush and haven't so much as opened Google Scholar to check for prior art.
+
+That might all be true. Which is fine. As long as they _disclose_ the situation upfront. The only true source of disappointment – in both reading and life – is unmet expectations.
+
+<Spacer size="small" />
+
+<h2 className="micro">The Pattern</h2>
+
+At the beginning of a piece of writing, the author writes a sentence or two about the **epistemic status** of the work. _Epistemology_ is the study of knowledge – how we know things, the methods we use to gain knowledge, and how we validate knowledge as "true.” So an _epistemic status_ usually covers how the author came to know what they know. This includes how much effort they put into researching it, how they validated the information, and how sure they are about their conclusions.
+
+Scott Alexander of [Slate Star Codex](https://slatestarcodex.com/) was one of the earliest well-known bloggers to do this. Many of his posts include statuses that range from "total conjecture” to "pretty good, but I make no claim this is original.” Here are a few more choice examples:
+
+<RemoteImage
+	framed
+	width="900px"
+	src="https://res.cloudinary.com/dxj9qr5gj/image/upload/c_scale,f_auto,q_auto:good,w_1200/v1641161435/maggieappleton.com/patterns/epistemic1_w0umsf.png"
+	alt="A Scott Alexander post with the epistemic status more crackpottish than usual"
+	margin="0 auto 1rem"
+/>
+
+<RemoteImage
+	framed
+	width="900px"
+	src="https://res.cloudinary.com/dxj9qr5gj/image/upload/c_scale,f_auto,q_auto:good,w_1200/v1641161787/maggieappleton.com/patterns/epistemic2_syifue.png"
+	alt="A Scott Alexander post with the epistemic status very speculative"
+	margin="0 auto 1rem"
+/>
+
+<RemoteImage
+	framed
+	width="900px"
+	src="https://res.cloudinary.com/dxj9qr5gj/image/upload/c_scale,f_auto,q_auto:good,w_1200/v1641161787/maggieappleton.com/patterns/epistemic3_meynmd.png"
+	alt="A Scott Alexander post with the epistemic status very speculative and not necessarily endorsed"
+	margin="0 auto 2rem"
+/>
+
+[Gwern](https://www.gwern.net/) is another blogger who adds rich metadata to each post. They have a numerical "certainty" rating on each post:
+
+<RemoteImage
+	framed
+	width="900px"
+	src="https://res.cloudinary.com/dxj9qr5gj/image/upload/c_scale,f_auto,q_auto:good,w_1200/v1641198514/maggieappleton.com/patterns/gwernepistemic_1_jpo0dp.png"
+	alt="A Gwern post on spaced repetition with a certainty rating of highly likely"
+	margin="0 auto 2rem"
+/>
+
+The rationalist and Effective Altruist communities have been particularly enthusiastic about the pattern. In true Rationalist style, one person writes up a comprehensive proposal to [standardize epistemic statuses](https://www.reddit.com/r/LessWrong/comments/eesr4y/a_proposal_for_standardizing_epistemic_status/) on the r/LessWrong subreddit.
+
+<References>
+	<ReferencesLink
+		title="Epistemic Effort on LessWrong"
+		href="https://www.lesswrong.com/posts/oDy27zfRf8uAbJR6M/epistemic-effort"
+		author="Raemon"
+	/>
+	<ReferencesLink
+		title="Epistemic Statuses are Lazy and that is a Good Thing"
+		href="https://devonzuegel.com/post/epistemic-statuses-are-lazy-and-that-is-a-good-thing"
+		author="Devon Zuegal"
+	/>
+</References>

@@ -1,0 +1,44 @@
+---
+
+---
+
+<div class="box" id="reverse-spinning-box"></div>
+
+<script>
+	const box = document.getElementById("reverse-spinning-box");
+
+	const observer = new IntersectionObserver(
+		([entry]) => {
+			if (entry.isIntersecting) {
+				box?.classList.add("animate");
+			}
+		},
+		{
+			threshold: 0.2,
+			rootMargin: "-30% 0px",
+		},
+	);
+
+	if (box) {
+		observer.observe(box);
+	}
+</script>
+
+<style>
+	.box {
+		width: 100px;
+		height: 100px;
+		margin: 2em;
+		border-radius: 4px;
+		background: #2d2a55;
+		/* Start from the transformed state */
+		transform: translateX(20vw) rotate(360deg);
+		transition: transform 0.8s ease-out;
+		will-change: transform;
+	}
+
+	.box.animate {
+		/* Animate back to initial state */
+		transform: translateX(0) rotate(0deg);
+	}
+</style>

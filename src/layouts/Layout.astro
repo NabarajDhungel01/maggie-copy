@@ -1,0 +1,149 @@
+---
+import Footer from "../components/layouts/Footer.astro";
+import Navbar from "../components/layouts/navbar/Navbar.astro";
+import { SEO } from "astro-seo";
+import "../global.css";
+
+export interface Props {
+	title?: string;
+	desc?: string;
+	type?: string;
+	coverImage?: string;
+}
+
+const { title, desc, type, coverImage } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+
+// Generate OG image URL
+const currentPath = Astro.url.pathname;
+const contentId = currentPath.split("/").filter(Boolean).join("/");
+
+// Use localhost URL in development, production URL otherwise
+const baseUrl = import.meta.env.DEV ? "http://localhost:4321" : Astro.site;
+
+// Construct OG image URL - now just using the content ID directly
+const ogImageURL = type
+	? new URL(`/og/${contentId}.png`, baseUrl)
+	: new URL(`/og.png`, baseUrl);
+
+// Only add search params for non-content pages (like the homepage)
+if (!type) {
+	if (title) ogImageURL.searchParams.set("title", title);
+	if (desc) ogImageURL.searchParams.set("description", desc);
+	if (coverImage) ogImageURL.searchParams.set("coverImage", coverImage);
+}
+
+// Google Analytics type declarations
+declare global {
+	interface Window {
+		dataLayer: any[];
+		gtag: (...args: any[]) => void;
+	}
+}
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta
+			name="google-site-verification"
+			content="DQjzoQ_jeforeKNzt5jAvs0u0_gxGJKYoaYfpGdXt2A"
+		/>
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="/images/favicon/apple-touch-icon.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="/images/favicon/favicon-32x32.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="16x16"
+			href="/images/favicon/favicon-16x16.png"
+		/>
+		<link rel="manifest" href="/manifest.json" />
+		<link
+			rel="alternate"
+			type="application/rss+xml"
+			title="Maggie Appleton's RSS Feed"
+			href="/rss.xml"
+		/>
+		<link
+			rel="webmention"
+			href="https://webmention.io/maggieappleton.com/webmention"
+		/>
+
+		<link
+			rel="pingback"
+			href="https://webmention.io/maggieappleton.com/xmlrpc"
+		/>
+		<link rel="me" href="https://bsky.app/profile/maggieappleton.com" />
+		<link rel="canonical" href={canonicalURL} />
+		<script
+			type="text/partytown"
+			async
+			src="https://www.googletagmanager.com/gtag/js?id=G-PT3NSRSMLT"></script>
+		<script type="text/partytown">
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag("js", new Date());
+			gtag("config", "G-PT3NSRSMLT");
+		</script>
+		<SEO
+			title={title}
+			description={desc ||
+				"Maggie's digital garden filled with visual essays on programming, design, and anthropology"}
+			canonical={canonicalURL}
+			openGraph={{
+				basic: {
+					type: "website",
+					url: canonicalURL,
+					title: title || "Maggie Appleton",
+					image: ogImageURL.toString(),
+				},
+				optional: {
+					locale: "en_GB",
+					description:
+						desc ||
+						"Maggie's digital garden filled with visual essays on programming, design, and anthropology",
+				},
+				image: {
+					alt: title || "Maggie Appleton's digital garden",
+					width: 1200,
+					height: 630,
+				},
+			}}
+			twitter={{
+				creator: "@mappletons",
+				card: "summary_large_image",
+				image: ogImageURL.toString(),
+				imageAlt: title || "Maggie Appleton's digital garden",
+			}}
+		/>
+	</head>
+	<body>
+		<Navbar />
+		<main>
+			<slot />
+		</main>
+		<Footer />
+		<style is:global>
+			/* Improve Page speed */
+			/* https://css-tricks.com/almanac/properties/c/content-visibility/ */
+			img {
+				content-visibility: auto;
+			}
+		</style>
+		<script async src="https://platform.twitter.com/widgets.js"></script>
+	</body>
+</html>

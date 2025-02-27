@@ -1,0 +1,74 @@
+---
+interface Props {
+	slug: string;
+	title: string;
+	date?: string;
+}
+
+const { slug, title, date } = Astro.props;
+---
+
+<a href={`/${slug}`} class="card">
+	<div class="card-content">
+		<div class="title-row">
+			<h3>{title}</h3>
+		</div>
+		{
+			date && (
+				<time datetime={date}>
+					{new Date(date).toLocaleDateString("en-US", {
+						year: "numeric",
+						month: "long",
+						day: "numeric",
+					})}
+				</time>
+			)
+		}
+	</div>
+</a>
+
+<style>
+	.card {
+		display: block;
+		padding: var(--space-s);
+		border-radius: var(--border-radius-base);
+		background: white;
+		transition: all 0.3s ease-in-out;
+		border: 1px solid var(--color-gray-100);
+		margin-bottom: var(--space-s);
+		text-decoration: none;
+	}
+
+	.card:hover {
+		border: 1px solid var(--color-sea-blue);
+		background: var(--color-cream);
+	}
+
+	.card-content {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-3xs);
+	}
+
+	.title-row {
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		gap: var(--space-s);
+	}
+
+	h3 {
+		font-family: var(--font-body);
+		font-size: var(--font-size-base);
+		font-weight: 400;
+		line-height: var(--leading-snug);
+		margin: 0;
+		color: var(--color-gray-800);
+	}
+
+	time {
+		font-family: var(--font-sans);
+		font-size: var(--font-size-sm);
+		color: var(--color-gray-600);
+	}
+</style>

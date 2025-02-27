@@ -1,0 +1,43 @@
+---
+title: "How to Import Academic Papers from Zotero into Tana"
+description: "How to use Zotero's translator and Tana Paste formatting to easily import papers into Tana"
+startDate: 2025-01-07T09:58:54.908Z
+updated: 2025-01-07T09:58:54.908Z
+growthStage: "budding"
+type: "note"
+topics: ["Tana", "Personal Knowledge"]
+---
+
+<IntroParagraph>I use [Tana](https://tana.inc/) as my primary knowledge base. It's an outliner with a powerful structured data system. Each node in your workspace can have a distinct type like “Person,” Book,” or “Article” and pre-set properties on those types like “Author,” “Abstract,” or “Reading Status.”</IntroParagraph>
+
+<BasicImage framed width="1100" src="/images/posts/tana-zotero/tana-types.png" margin="1rem auto 3rem" showalt alt="An example daily notes page in Tana with typed nodes" />
+
+The Tana team developed a special format for getting structured data into Tana from external sources (your browser, Twitter, Readwise, etc.). It's called [Tana Paste](https://tana.inc/docs/tana-paste). They have a bunch of platform-specific [examples here](https://github.com/tanainc/tana-paste-examples).
+
+I mainly use this for getting data from [Zotero](https://www.zotero.org/) into Tana. I've kept all my academic reference papers in Zotero since 2011 and don't have any interest in switching away from it, but still need to refer to papers within Tana while I'm researching.
+
+I've made a [Zotero to Tana Translator](https://gist.github.com/MaggieAppleton/64ff7fd6e601853ec7151ba9c7cefcfe) script that grabs the metadata stored in Zotero and pastes it into Tana with all the properties filled in.<Footnote idName={1}>Credit also goes to [Stian Håklev](http://reganmian.net/blog/about-me/) and [Joel Chan](https://joelchan.me/) for iterating on previous versions of this and sharing it.</Footnote>
+
+### How to Set it Up
+
+1. Download my translator file from this [Github Gist](https://gist.github.com/MaggieAppleton/64ff7fd6e601853ec7151ba9c7cefcfe). This is a JavaScript file that converts the Zotero metadata into Tana Paste format.
+
+<BasicImage framed width="1000" margin="0 auto 4rem" src="/images/posts/tana-zotero/tana-zotero-6.png" />
+
+2. Move that file into your Zotero translators file. This should automatically exist if you have Zotero installed. It's in `~/Zotero/translators/` on your harddrive. You'll see a bunch of existing translators in there. Add the file you downloaded. I renamed mine `Tana.js` but it doesn't really matter what you call it.
+
+<BasicImage framed width="1000" margin="0 auto 4rem" src="/images/posts/tana-zotero/tana-zotero-5.png" />
+
+3. Restart Zotero, then open the Settings panel and go to the Export tab. In the Item Format dropdown menu you should now see a “Tana Metadata Export” option. If you don't see it, restart Zotero. Once it appears, select it and close the settings panel.
+
+<BasicImage framed width="750" margin="0 auto 4rem" src="/images/posts/tana-zotero/tana-zotero-1.png" />
+
+4. Select a paper in your Zotero collection and hit `Cmd+Shift+C` to copy to your clipboard it in Tana format. Alternatively, right-click and select Export Item. You'll need to select “Tana Metadata Export” again from the dropdown menu here.
+
+<BasicImage framed width="1000" margin="0 auto 4rem" src="/images/posts/tana-zotero/tana-zotero-4.png" />
+
+5. Open Tana, make a new node, and paste the item in. It should look something like this:
+
+<BasicImage framed width="1100" margin="0 auto 4rem" src="/images/posts/tana-zotero/tana-zotero-2.png" />
+
+Note that the tag name, property names, and overall format of the pasted item are based on my personal preferences. To change these, open the translator JavaScript file in any text editor and adjust the names and properties as needed. It'll probably be helpful to look at the [Tana Paste](https://tana.inc/docs/tana-paste) docs first.
