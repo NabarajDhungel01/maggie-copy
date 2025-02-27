@@ -11,7 +11,7 @@ const BASE_PATH = "/maggie-copy"; // Change this to match your repo name
 
 export default defineConfig({
   site: "https://NabarajDhungel01.github.io/maggie-copy",
-  base: "/maggie-copy", // ✅ Required for GitHub Pages
+  base: BASE_PATH, // ✅ Required for GitHub Pages
   output: "static", // ✅ Required for GitHub Pages (Static Site)
   trailingSlash: "always", // ✅ Ensures URLs work on GitHub Pages
 
@@ -30,6 +30,12 @@ export default defineConfig({
     }),
     react(),
     icon(),
+    {
+      name: "astro-embed",
+      options: {
+        twitter: { fetch: false }, // ✅ Prevents Astro-Embed from fetching tweets
+      },
+    },
   ],
 
   vite: {
@@ -45,5 +51,4 @@ export default defineConfig({
   markdown: {
     extendDefaultPlugins: true,
   },
-
 });
