@@ -6,12 +6,15 @@ import icon from "astro-icon";
 import partytown from "@astrojs/partytown";
 import { remarkWikiLink } from "./src/plugins/remark-wiki-link";
 
-// https://astro.build/config
+// Get the repo name (e.g., 'maggie-copy') from the GitHub URL
+const BASE_PATH = "/maggie-copy"; // Change this to match your repo name
+
 export default defineConfig({
-  site: "https://nabarajdhungel01.github.io",
-  // image: {
-  //   domains: ["res.cloudinary.com"],
-  // },
+  site: "https://NabarajDhungel01.github.io", 
+  base: BASE_PATH, 
+  output: "static", // ✅ Required for GitHub Pages (Static Site)
+  trailingSlash: "always", // ✅ Ensures URLs work on GitHub Pages
+
   integrations: [
     mdx({
       remarkPlugins: [remarkWikiLink],
@@ -28,4 +31,24 @@ export default defineConfig({
     react(),
     icon(),
   ],
+
+  vite: {
+    build: {
+      outDir: "dist", 
+    },
+    define: {
+      global: false, // ✅ Fixes build issue related to global variables
+    },
+    assetsInclude: ["**/*.png", "**/*.jpg", "**/*.jpeg", "**/*.svg"], // ✅ Ensures images load properly
+  },
+
+  markdown: {
+    extendDefaultPlugins: true,
+  },
+
+  experimental: {
+    images: {
+      service: "astro/assets",
+    },
+  },
 });
