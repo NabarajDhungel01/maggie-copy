@@ -46,9 +46,4 @@ export default defineConfig({
     extendDefaultPlugins: true,
   },
 
-  experimental: {
-    images: {
-      service: "astro/assets",
-    },
-  },
 });

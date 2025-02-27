@@ -3,7 +3,7 @@ name: Deploy Astro to GitHub Pages
 on:
   push:
     branches:
-      - main
+      - main  # Run this on every push to main branch
 
 jobs:
   deploy:
@@ -23,7 +23,7 @@ jobs:
         run: npm install
 
       - name: Build Astro project
-        run: npm run build
+        run: npm run build  # ✅ Run the build process in GitHub Actions
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
