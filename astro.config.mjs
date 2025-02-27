@@ -10,8 +10,8 @@ import { remarkWikiLink } from "./src/plugins/remark-wiki-link";
 const BASE_PATH = "/maggie-copy"; // Change this to match your repo name
 
 export default defineConfig({
-  site: "https://NabarajDhungel01.github.io", 
-  base: BASE_PATH, 
+  site: "https://NabarajDhungel01.github.io/maggie-copy",
+  base: "/maggie-copy", // ✅ Required for GitHub Pages
   output: "static", // ✅ Required for GitHub Pages (Static Site)
   trailingSlash: "always", // ✅ Ensures URLs work on GitHub Pages
 
